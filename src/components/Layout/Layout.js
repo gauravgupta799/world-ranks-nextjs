@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import Head from 'next/head'
 import styles from "./Layout.module.css";
 import Link from "next/link";
@@ -6,6 +6,24 @@ import Logo from "./logo.js";
 import Brightness6Icon from '@mui/icons-material/Brightness6';
 
 const Layout = ({children}) => {
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", 
+    localStorage.getItem("theme")
+    );
+    setTheme(localStorage.getItem("theme"))
+  },[])
+
+  const saveTheme =(theme)=>{
+    setTheme(theme);
+    localStorage.setItem("theme", theme);
+    document.documentElement.setAttribute("data-theme", theme)
+  }
+
+  const switchTheme =()=>{
+    theme === "light" ? saveTheme("dark"): saveTheme("light")
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -18,7 +36,7 @@ const Layout = ({children}) => {
         <Link href="/">
             <Logo/>
         </Link>
-        <button className={styles.modeBtn} >
+        <button className={styles.modeBtn} onClick={switchTheme} >
             <Brightness6Icon/>
         </button>
       </header>

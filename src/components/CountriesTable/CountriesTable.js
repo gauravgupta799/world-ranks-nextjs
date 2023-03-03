@@ -23,7 +23,6 @@ const orderBy =(countries, direction)=>{
 }
 
 const CountriesTable = ({countries}) => {
-    const [cname, setCname] = useState("");
     const [sortVal, setSortVal] = useState("")
     const orderedCountries = orderBy(countries, sortVal)
 
@@ -43,9 +42,9 @@ const CountriesTable = ({countries}) => {
             <button className={styles.heading_population}>
                 <h2>Population</h2>
                 <select className={styles.select} onChange={(e)=> setSortVal(e.target.value)}>
-                    {sortPopulationArray.map((option,i)=> 
-                        <option key={i} name ={option} value={option}>
-                            {option}
+                    {sortPopulationArray.map((popltn,i)=> 
+                        <option key={i} name ={popltn} value={popltn}>
+                            {popltn}
                         </option>
                     )}
                 </select>
@@ -53,17 +52,17 @@ const CountriesTable = ({countries}) => {
         </div>
         {orderedCountries.map((country)=>{
             return(
-                <>
+              <div key={country.name}>
                     <Link href={`/country/${country.ccn3}`}>
-                        <div className={styles.row} key={country.name}>
+                        <div className={styles.row}>
                             <div className={styles.name}>
                                 <Image src={country.flags.svg} width="40" height="40" alt="flag"/>
                                 {country.name.common}
                             </div>
                             <div className={styles.population}>{country.population}</div>
                         </div>
-                    </Link>
-                </>
+                    </Link> 
+              </div>
             )
         })}
     </div>

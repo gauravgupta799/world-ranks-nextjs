@@ -13,10 +13,9 @@
 .modeBtn{
   border:none;
   background:transparent;
-  color:#999;
+  color:var(--primary-color);
 }
 .modeBtn:hover{
-  color:#222;
   cursor: pointer;
 }
 .main{

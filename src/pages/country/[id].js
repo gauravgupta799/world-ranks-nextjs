@@ -1,8 +1,14 @@
 import Layout from '@/src/components/Layout/Layout'
 import React from 'react'
-import Image from "next/image";
+// import Image from "next/image";
 import styles from "./country.module.css";
 import Link from "next/link";
+
+const getCountry = async(id)=>{
+    const response = await fetch(`https://restcountries.com/v3.1/alpha/${id}`);
+    const country = await response.json();
+    return country;
+}
 
 const Country = ({country}) => {
     const {name,region,flags,
@@ -10,8 +16,7 @@ const Country = ({country}) => {
            area,capital,languages,
            currencies,gini,borders,altSpellings
         } = country[0];
-    // console.log("country",country)
-    // console.log(borders.sort().join(", "))
+ 
   return (
     <Layout title={country.name}>
         <Link href="/"><h4>Home</h4></Link>
@@ -105,9 +110,8 @@ export default Country
 
 export async function getServerSideProps(context){
     const Id = context.params.id;
-    const response = await fetch(`https://restcountries.com/v3.1/alpha/${Id}`);
-    const country = await response.json();
+     const country = await getCountry(Id);
     return {
-        props:{ country, }    
+        props:{ country}    
     }
 }
