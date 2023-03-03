@@ -22,9 +22,7 @@ const Country = ({country}) => {
         <Link href="/"><h4>Home</h4></Link>
         <div className={styles.countryContainer}> 
             <div className={styles.overview_panel}>
-                <Image src={flags.svg} alt={country.name} 
-                className={styles.img}
-                width="100" height="80"/>  
+                <Image src={flags.svg} alt={country.name} width="100" height="80"/>  
                 <h1 className={styles.overview_name}>{name.common}</h1>
                 <div className={styles.overview_region}>{region}</div>
                 <div className={styles.overview_subregion}>{subregion}</div>
