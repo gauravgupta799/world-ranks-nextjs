@@ -1,0 +1,31 @@
+.container{
+ height:100vh;
+ display: grid;
+ grid-template-rows:auto 1fr auto;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:0.5rem;
+    padding:1rem 0px;
+}
+.modeBtn{
+  border:none;
+  background:transparent;
+  color:#999;
+}
+.modeBtn:hover{
+  color:#222;
+  cursor: pointer;
+}
+.main{
+  padding: 24px;
+}
+.footer{
+  text-align: center;
+  font-size:0.75rem;
+  height:50px;
+  padding-top: 1rem;
+  border-top:2px solid var(--text-color-secondary);
+}
