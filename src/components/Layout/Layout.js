@@ -44,7 +44,7 @@ const Layout = ({children}) => {
        {children}
       </main>
       <footer className={styles.footer}>
-        The CountriesRanks &lt;@countriesranks.in&gt;  
+        The WolrdRanks &lt;@worldranks.in&gt;  
         by @gauravgupta
       </footer>
     </div>
